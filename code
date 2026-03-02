@@ -1,0 +1,27 @@
+import java.util.Scanner;
+public class ATM {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int balance = 5000, pin = 1234;
+        System.out.print("Enter PIN: ");
+        if (sc.nextInt() != pin) {
+            System.out.println("Wrong PIN");
+            return;
+        }
+        int ch;
+        do {
+            System.out.println("\n1.Balance 2.Deposit 3.Withdraw 4.Exit");
+            ch = sc.nextInt();
+            if (ch == 1)
+                System.out.println("Balance: " + balance);
+            else if (ch == 2)
+                balance += sc.nextInt();
+            else if (ch == 3) {
+                int w = sc.nextInt();
+                if (w <= balance) balance -= w;
+                else System.out.println("Insufficient Balance");
+            }
+        } while (ch != 4);
+        sc.close();
+    }
+}
